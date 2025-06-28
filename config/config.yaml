@@ -1,0 +1,36 @@
+logging:
+  level: "DEBUG"
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+  formatters:
+    base: "[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s"
+    console: "%(log_color)s[%(asctime)s] [%(levelname)s] [%(name)s] %(message)s%(reset)s"
+
+  colors:
+    DEBUG: "cyan"
+    INFO: "green"
+    WARNING: "yellow"
+    ERROR: "red"
+    CRITICAL: "bold_red"
+
+  handlers:
+
+    console:
+      enabled: true
+      level: "DEBUG"
+      formatter_name: "console"
+      colorized: true
+
+    file:
+      enabled: true
+      level: "DEBUG"
+      formatter_name: "base"
+      logs_dir: "logs"
+      log_prefix: "rimhub"
+      log_suffix: ".log"
+      file_name_format: "{prefix}_{date}.{suffix}"
+      keep_last: 5
+
+      rotation:
+        max_size: 5242880
+        backup_limit: 0
